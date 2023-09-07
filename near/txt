@@ -1,0 +1,13 @@
+source .env
+
+near call $NFT nft_mint '{"token_id": "letbylet winner#1", "receiver_id": "'$USER1'", "token_metadata": {"title": "letbylet F", "description": "wrote \"F\" letter by letter"}}' --accountId $CONTRACT --deposit 0.01
+
+near view $NFT nft_tokens_for_owner '{"account_id": "'$USER1'"}'
+
+near create-account $FNT --masterAccount $CONTRACT --initialBalance 150
+
+cargo build --target wasm32-unknown-unknown --release
+
+near deploy $NFT non_fungible_token.wasm new_default_meta '{"owner_id": "'$CONTRACT'"}'
+
+near deploy $CONTRACT target/wasm32-unknown-unknown/release/letbylet.wasm new '{"target": "бу"}'
