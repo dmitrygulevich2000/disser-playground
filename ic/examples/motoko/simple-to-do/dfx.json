@@ -1,0 +1,7 @@
+{
+  "canisters": {
+    "simple_to_do": {
+      "main": "src/Main.mo"
+    }
+  }
+}

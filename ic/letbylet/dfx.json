@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "canisters": {
+    "letbylet_backend": {
+      "type": "motoko",
+      "main": "src/letbylet_backend/main.mo"
+    },
+    "letbylet_frontend": {
+      "type": "assets",
+      "source": [
+        "src/letbylet_frontend/assets"
+      ],
+      "dependencies": [
+        "letbylet_backend"
+      ]
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "",
+      "args": ""
+    }
+  },
+  "output_env_file": ".env"
+}

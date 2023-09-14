@@ -1,0 +1,41 @@
+default
+swap surface blame plastic region hello elbow cricket glimpse steak impulse wing people tribe meadow welcome submit auction matter steak jeans door image aware
+
+user1
+coach plastic alley permit either dad weekend sister relax cancel have castle exchange creek order unknown attitude remember rain clerk leg horror radio volume
+
+user2
+frequent retire cabin armed hockey weekend symptom bird lake outdoor conduct arrive wrap famous sight wolf term olympic plunge cruise essence dream silent toward
+
+dfx start --background --clean
+
+dfx identity new user1
+dfx identity use user1
+dfx identity get-principal
+
+dfx canister create letbylet_backend
+dfx build letbylet_backend
+dfx canister install letbylet_backend --argument hi
+
+http://localhost:4943/?canisterId=$(dfx canister id letbylet_backend)
+
+dfx canister stop letbylet_backend
+dfx canister install letbylet_backend --mode upgrade --argument br
+dfx canister start letbylet_backend
+
+dfx canister call letbylet_backend append b --identity user1
+
+# passed canisterId to as principal
+dfx deploy dip721_nft_container --argument "(
+  principal\"bkyz2-fmaaa-aaaaa-qaaaq-cai\", 
+  record {
+    logo = record {
+      logo_type = \"image/png\";
+      data = \"\";
+    };                    
+    name = \"My DIP721\";                                                                                              
+    symbol = \"DFXB\";                                                  
+    maxLimit = 10;                                                                   
+  }                                                                          
+)"
+

@@ -1,0 +1,7 @@
+{
+  "canisters": {
+    "quicksort": {
+      "main": "src/Main.mo"
+    }
+  }
+}
