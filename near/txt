@@ -1,3 +1,5 @@
+git@github.com:near-examples/NFT.git
+
 source .env
 
 near call $NFT nft_mint '{"token_id": "letbylet winner#1", "receiver_id": "'$USER1'", "token_metadata": {"title": "letbylet F", "description": "wrote \"F\" letter by letter"}}' --accountId $CONTRACT --deposit 0.01

@@ -1,5 +1,0 @@
-service : {
-  get : () -> (int64) query;
-  inc : () -> ();
-  set : (int64) -> ();
-}
