@@ -1,0 +1,4 @@
+/aptos-core/
+
+build/
+node_modules/

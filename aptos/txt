@@ -1,0 +1,44 @@
+git clone https://github.com/aptos-labs/aptos-core.git
+
+aptos-core/ecosystem/typescript/sdk $
+    npm install
+
+aptos init
+    account: 0xcf9a5986e59f435aadb2fae0324924d524484b2741e8f09037697a7950a3c0d5
+aptos config show-profiles
+
+aptos move init --name letbylet --package-dir letbylet/ --framework-local-dir ../aptos-core/aptos-move/framework/aptos-framework --named-addresses me=default
+
+aptos move compile
+aptos move publish
+    txHash: 0xa83aa18cff5cfcec7897429953112fe6a85c9c4978b4318ff71addba14652917
+
+aptos move run --function-id 'default::letbylet::new_game' --args 'string:hi'
+    0x9a4fb84c55a21a5bd805ca25bec76c56ee8a1761d76f4fea39c008bc717ee50c
+https://fullnode.devnet.aptoslabs.com/v1/accounts/0xcf9a5986e59f435aadb2fae0324924d524484b2741e8f09037697a7950a3c0d5/resource/0xcf9a5986e59f435aadb2fae0324924d524484b2741e8f09037697a7950a3c0d5::letbylet::Game
+aptos move run --function-id 'default::letbylet::append' --args 'string:h'
+    0x199e4f35e07f178996f262e5c4c2cd96a7d45300670d15c7395007240999c8fd
+aptos init --profile user1
+    0x8ae9e7295d2dfeafe8a66bee1d95d62df3e0b9b1345591138648e830e3f93dd3
+aptos move run --function-id 'default::letbylet::append' --args 'string:h' --profile user1
+    0xc33c12fc039e8de0cc00ab8540a39405f0571e45cf35058a5b6b45a396800cc6
+    0x75274fd9aadab00329ac86474267602e30b1526eebdf7fc21e601e2aeb47b8b5
+    0x9fe67aacd2a53df40821d8b54c8424933052fa4ac609162d5b7b24354ec46d9f
+
+aptos-core/aptos-move/move-examples/mint_nft/2-Using-Resource-Account $
+    aptos move create-resource-account-and-publish-package --seed 228 --address-name mint_nft --profile default --named-addresses source_addr=default
+        address: 0xb4eb53e27a20f0f3c38c054cd0fb0ef6e0605388032577d12abfd380ca986675
+    aptos move run --function-id 0xb4eb53e27a20f0f3c38c054cd0fb0ef6e0605388032577d12abfd380ca986675::create_nft_with_resource_account::mint_event_ticket --profile user1
+        txHash: 0xcc1cd0df2f80b68b4b3ca64a025cfde149ef00e3ee0d9e3db5f6ebe461de7f55
+
+aptos-core/aptos-move/move-examples/mint_nft/1-Create-NFT $
+    aptos move publish --named-addresses mint_nft=default
+        txHash: 0x62a4bbffec6a1895fed2af9deb9f8191a770f2c892e0e3a6bc3b63253a1c1a13
+
+aptos move compile --named-addresses mint_nft=0xb4eb53e27a20f0f3c38c054cd0fb0ef6e0605388032577d12abfd380ca986675,source_addr=default
+aptos move publish --named-addresses mint_nft=0xb4eb53e27a20f0f3c38c054cd0fb0ef6e0605388032577d12abfd380ca986675,source_addr=default
+    txHash: 0x00ae9d1a5e117e139b1d8c0f97e9a20cc6fe1b78a468b57c07b7673ac952f01a
+
+win tx with mint: 0x95fa508debf9b5e11e568f7a93ff5e68a65e5c9882f9732f2fcf66f8a38e195b
+
+aptos move view --function-id 'default::letbylet::finished' --profile user1

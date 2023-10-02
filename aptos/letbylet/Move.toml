@@ -1,0 +1,16 @@
+[package]
+name = "letbylet"
+version = "1.0.0"
+authors = []
+
+[addresses]
+me = "0xcf9a5986e59f435aadb2fae0324924d524484b2741e8f09037697a7950a3c0d5"
+nft = "0xb4eb53e27a20f0f3c38c054cd0fb0ef6e0605388032577d12abfd380ca986675"
+
+[dev-addresses]
+
+[dependencies]
+AptosFramework = { local = "../aptos-core/aptos-move/framework/aptos-framework" }
+Examples = { local = "../aptos-core/aptos-move/move-examples/mint_nft/2-Using-Resource-Account" }
+
+[dev-dependencies]
