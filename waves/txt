@@ -1,0 +1,36 @@
+git clone https://github.com/waves-enterprise/we-node
+git clone git@github.com:stfy/habr-amm.git
+
+
+sbt "node/assembly"
+docker build --tag wavesenterprise/node:v1.13.0 .
+
+/we-node/node/src/docker$
+    docker run --rm -ti -v $(pwd):/config-manager/output wavesenterprise/config-manager:v1.8.2
+        https://hub.docker.com/r/wavesenterprise/config-manager/tags
+
+
+https://www.npmjs.com/package/create-we-contract
+    npm create we-contract Hello -- --path hello -n hello
+
+/hello$
+    npm install --save-dev @wavesenterprise/sdk
+    npm install --save-dev @wavesenterprise/js-sdk
+    npm install @wavesenterprise/transactions-factory --save-dev
+    npm install "@wavesenterprise/signer" --save-dev
+
+    node scripts/seed.js
+        identify nominee amused melody potato thing shuffle mixture clarify piano game segment indoor embody inmate
+        3FhQAyr2teUPwzcHPNhT5CebPZ6Gg8GcTEH
+        {
+        privateKey: 'CsRKU7AcjvdEup7BsbPB4CxPNQErK9kiAo5Tm3KS6oSA',
+        publicKey: 'HxqR5LJDz7hXaNS5tBLTja2oKAX2G7rjP4mMnbjihQu6'
+        }
+
+    https://distribution.github.io/distribution/
+    https://docs.wavesenterprise.com/ru/latest/usage/docker-sc/sc-general.html#sc-repo
+        docker run -d -p 5000:5000 --name registry registry:2
+        docker build -t inc-contract .
+        docker image tag inc-contract localhost:5000/inc-contract
+        docker inspect localhost:5000/inc-contract:latest
+            "Id": "sha256:c8ea61e43c53b0d2b4df38c895eddd8ff184e09d82fe00fb60cbded780de0242"

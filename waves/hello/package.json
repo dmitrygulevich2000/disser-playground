@@ -1,0 +1,25 @@
+{
+  "name": "js-contract-sdk",
+  "version": "1.0.1",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "deploy": "we-cli create -n mainnet",
+    "deploy:testnet": "we-cli deploy -n testnet",
+    "deploy:sandbox": "we-cli deploy -n sandbox"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.7.1",
+    "@wavesenterprise/contract-core": "^1.1.5",
+    "@wavesenterprise/crypto-utils": "^1.0.0-rc.1"
+  },
+  "devDependencies": {
+    "@wavesenterprise/contract-cli": "^0.0.1",
+    "@wavesenterprise/js-sdk": "^3.4.8-alpha.2",
+    "@wavesenterprise/sdk": "^1.0.7",
+    "@wavesenterprise/signer": "^1.0.3",
+    "@wavesenterprise/transactions-factory": "^2.0.2",
+    "typescript": "^4.6.2"
+  }
+}
