@@ -1,33 +1,32 @@
 const { TRANSACTIONS, TRANSACTION_TYPES } = require("@wavesenterprise/transactions-factory")
-const { sdk, getKeyPair } = require("./common");
 
-async function deploy() {
+const { CONTRACT_ID, sdk, getKeyPair } = require("./common");
+
+async function increment(by) {
     const config = await sdk.node.config();
-    const fee = config.minimumFee[TRANSACTION_TYPES.CreateContract];
+    const fee = config.minimumFee[TRANSACTION_TYPES.CallContract];
     console.log("config got, fee is", fee);
 
     const keyPair = await getKeyPair();
 
-    const tx = TRANSACTIONS.CreateContract.V5({
+    const tx = TRANSACTIONS.CallContract.V5({
         fee,
-        image: "localhost:5000/inc-contract:0.0.1",
-        imageHash: "a5534fa0493d763f69b2bff7cfb2bb3fab192d263190e5890919c66518c0e1eb",
-        contractName: "Increment",
-        sender: keyPair.address(),
+        contractId: CONTRACT_ID,
         senderPublicKey: await keyPair.publicKey(),
-        validationPolicy: { type: 'any' },
         params: [
             {
-                key: 'init',
-                type: 'integer',
-                value: 1,
+                key: 'action', value: 'increment', type: 'string'
             },
+            {
+                key: 'by', value: by, type: 'integer'
+            }
         ],
         payments: [],
+        contractVersion: 1,
         apiVersion: "1.0"
     });
 
-    const signedTx = await sdk.signer.getSignedTx(tx, SEED);
+    const signedTx = await sdk.signer.getSignedTx(tx, keyPair);
     console.log("signed Tx:", signedTx);
     const sentTx = sdk.broadcast(signedTx);
 
@@ -35,11 +34,11 @@ async function deploy() {
 }
 
 module.exports = {
-    deploy
+    increment
 }
 
 if (require.main === module) {
-    deploy().then((sentTx) => {
+    increment(1).then((sentTx) => {
         console.log("sent Tx:", sentTx);
         console.log("Success");
     }).catch((err) => {

@@ -11,28 +11,27 @@ import {
   Tx,
   Var,
 } from '@wavesenterprise/contract-core'
-import BN from 'bn.js'
 
 @Contract()
 export default class Hello {
-  @Var()
-  counter!: ContractValue<number>
+  log = logger(this)
 
+  @Var() counter!: ContractValue<number>
 
   @Action({ onInit: true })
-  init(@Param('init') initial_counter) {
+  init(@Param('init') initial_counter: number) {
+    this.log.info(`called init with ${initial_counter}`)
+    console.log('called init with %d', initial_counter)
+
     this.counter.set(initial_counter)
   }
 
-  @Action({ preload: ['counter'] })
+  @Action()
   async increment(@Param('by') by: number) {
+    this.log.info(`called increment by ${by}`)
+    console.log('called increment by %d', by)
+
     const counter = await this.counter.get()
     this.counter.set(counter + by)
-  }
-
-  @Action({ preload: ['counter'] }) 
-  async get(): Promise<number> {
-    const counter = await this.counter.get()
-    return counter
   }
 }

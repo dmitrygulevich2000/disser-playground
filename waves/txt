@@ -20,17 +20,28 @@ https://www.npmjs.com/package/create-we-contract
     npm install "@wavesenterprise/signer" --save-dev
 
     node scripts/seed.js
-        identify nominee amused melody potato thing shuffle mixture clarify piano game segment indoor embody inmate
-        3FhQAyr2teUPwzcHPNhT5CebPZ6Gg8GcTEH
-        {
-        privateKey: 'CsRKU7AcjvdEup7BsbPB4CxPNQErK9kiAo5Tm3KS6oSA',
-        publicKey: 'HxqR5LJDz7hXaNS5tBLTja2oKAX2G7rjP4mMnbjihQu6'
-        }
+        virtual trim sunset enrich into pet embody never trend announce clarify bulk opinion estate heart
+        public key: Czt6JCRdaGD9DvjRg2cS5s4iopgTTRd1Z7WZy36YwxWP
+        private key: G6KHJKTMWVRPFr8nu47J9ARpP1A1wcGT8pFErwVYY8ck
+        address ot type V : 3P1Yf6P39Mihs2hy85eqFyDmeGJn3Ux1qee
 
     https://distribution.github.io/distribution/
     https://docs.wavesenterprise.com/ru/latest/usage/docker-sc/sc-general.html#sc-repo
         docker run -d -p 5000:5000 --name registry registry:2
-        docker build -t inc-contract .
-        docker image tag inc-contract localhost:5000/inc-contract
-        docker inspect localhost:5000/inc-contract:latest
-            "Id": "sha256:c8ea61e43c53b0d2b4df38c895eddd8ff184e09d82fe00fb60cbded780de0242"
+        docker build -t localhost:5000/inc-contract:0.0.1 .
+        docker inspect localhost:5000/inc-contract:0.0.1
+            "Id": "sha256:a5534fa0493d763f69b2bff7cfb2bb3fab192d263190e5890919c66518c0e1eb",
+
+    изменил в конфиге для быстрой активации фич
+    feature-check-blocks-period = 2
+    blocks-for-feature-activation = 1
+
+    node scripts/deploy.js
+        txId == contract dddress
+            HwuXTDCWQSEt3ggBVPnKrTCkiPcXtNwC4u1RkgSg63Wd
+
+    node scripts/call.js
+        2023-11-11 10:19:10,184 DEBUG [miner-pool-123] c.w.d.MinerTransactionsExecutor - Start executing contract transaction 'AfJo23EsHxMo3sUqnXP1aHib5DFMnZ1wMvQKJZ7mp83R'
+        2023-11-11 10:19:10,657 DEBUG [miner-pool-123] c.w.d.MinerTransactionsExecutor - Built executed transaction 'CDzbXwpUUtJ41oXoBSR6YJHT84oNfBZYJsNree7RY3r7' for 'AfJo23EsHxMo3sUqnXP1aHib5DFMnZ1wMvQKJZ7mp83R'
+        
+    node scripts/update.js
