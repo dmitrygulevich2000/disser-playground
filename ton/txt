@@ -1,0 +1,33 @@
+testnet
+V4
+EQA0WN7Zfr-1h0gWDukVruGGhXkMssqAhPpl_k5pmagsmA1J
+asthma rice social horse subway exotic merge blue mango bone drill guess kitchen prosper health very leader way hill loyal mushroom fame tool fame
+V3
+gossip float fluid abuse carpet wood surface other woman april famous shoulder item impulse nephew brain catalog property absorb vicious custom trial buzz odor
+V4
+EQDyQ05kjGsCqNbfl90hEpN88UY0ef-ZGXoRnsHYwAMuWzH-
+secret journey reopen tooth scrub vocal turkey want only warrior carpet around result ethics balcony leisure width choice hedgehog salad solar mobile come beach
+
+local
+V3R2
+main resource evidence world audit lake play action side assault awful economy thank fancy decline woman roast punch wait marriage next subway isolate twenty
+V3R2
+wrap honey weapon pink story human dentist oyster knock kite attract never long meadow edge disagree region sadness movie top raw close puppy demand
+V3R2
+record this current hello wrap number spike casual tired amateur wait humble ivory boost inhale chronic enough shift hello hello oppose elite gym gap
+
+https://github.com/ton-community/tutorials/tree/main/02-contract/test
+
+npm create ton@latest
+npm install @orbs-network/ton-access
+
+npx ts-node scripts/deploy.ts
+  testnet
+    EQB72oxwTBSdrj0G-vF3IE6reYxHBMD2QYOhrcf1qcHrbRmI
+  local
+    EQA_KTHbze8hyF1YvkrxDkepkadZWKnbu8FSSZXEYlW4cUpY
+
+
+MyLocalTon
+java -jar MyLocalTon-x86-64-testnet.jar
+/home/dmitry/.local/bin/ton-http-api --liteserver-config /home/dmitry/tools/myLocalTon/myLocalTon/genesis/db/my-ton-global.config.json --port 8081
