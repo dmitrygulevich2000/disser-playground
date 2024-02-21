@@ -5,7 +5,7 @@ import { getClient, getSender } from "./common";
 
 export async function run() {
     const client = await getClient("local");
-    const sender = await getSender(client, "main resource evidence world audit lake play action side assault awful economy thank fancy decline woman roast punch wait marriage next subway isolate twenty", true);
+    const sender = await getSender(client, "3424db8f21c09343158da80c689eec8b3d03bef106bd0483d25eec55057cad21d99b9b5cbe4dc2810e529c9646af105874f4ee838299dd6de1fd7b8b08843758");
 
     const counterAddress = Address.parse("EQA_KTHbze8hyF1YvkrxDkepkadZWKnbu8FSSZXEYlW4cUpY");
     const counter = client.open(Counter.createFromAddress(counterAddress));

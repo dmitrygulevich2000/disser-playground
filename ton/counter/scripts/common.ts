@@ -1,6 +1,6 @@
 import { getHttpEndpoint, Config } from "@orbs-network/ton-access";
 import { WalletContractV3R2, WalletContractV4, TonClient } from "@ton/ton";
-import { mnemonicToWalletKey } from "ton-crypto";
+import { mnemonicToWalletKey, keyPairFromSecretKey, KeyPair } from "ton-crypto";
 
 export async function getClient(network: "testnet" | "mainnet" | "local" = "testnet") {
     let endpoint = "http://127.0.0.1:8081/jsonRPC";
@@ -10,8 +10,18 @@ export async function getClient(network: "testnet" | "mainnet" | "local" = "test
     return new TonClient({ endpoint });
 }
 
-export async function getSender(client: TonClient, mnemonic: string, isLocal: boolean = false) {
-    const key = await mnemonicToWalletKey(mnemonic.split(" "));
+export async function getSender(client: TonClient, mnemonicOrSecretKey: string) {
+    const isLocal = (mnemonicOrSecretKey.length == 128);
+    if (mnemonicOrSecretKey.split(" ").length != 1) {
+        return Promise.reject("secret key expected to be 64-byte hex string")
+    }
+    
+    let key: KeyPair;
+    if (isLocal) {
+        key = keyPairFromSecretKey(Buffer.from(mnemonicOrSecretKey, 'hex'));
+    } else {
+        key = await mnemonicToWalletKey(mnemonicOrSecretKey.split(" "));
+    }
 
     let wallet = WalletContractV4.create({ publicKey: key.publicKey, workchain: 0 });
     if (isLocal) {

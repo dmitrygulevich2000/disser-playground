@@ -10,11 +10,9 @@ secret journey reopen tooth scrub vocal turkey want only warrior carpet around r
 
 local
 V3R2
-main resource evidence world audit lake play action side assault awful economy thank fancy decline woman roast punch wait marriage next subway isolate twenty
-V3R2
-wrap honey weapon pink story human dentist oyster knock kite attract never long meadow edge disagree region sadness movie top raw close puppy demand
-V3R2
-record this current hello wrap number spike casual tired amateur wait humble ivory boost inhale chronic enough shift hello hello oppose elite gym gap
+3424db8f21c09343158da80c689eec8b3d03bef106bd0483d25eec55057cad21d99b9b5cbe4dc2810e529c9646af105874f4ee838299dd6de1fd7b8b08843758
+da264577500b74d5f74866f52840b51fbfd176495e81284c1b3795451cae7199e9552b55c471b7d14014a6eb719ea0e4ee7d1c537afcb431ef96738274d31b81
+ada3fd75f7e89371161a15f8c5542b402b2c4b86fbfdd9efdd4c7823fff6530b087b0b5655abb4a76c9528dfc1d9c9cde256dd51569f07ea3f96ef5dab32844f
 
 https://github.com/ton-community/tutorials/tree/main/02-contract/test
 
@@ -22,12 +20,16 @@ npm create ton@latest
 npm install @orbs-network/ton-access
 
 npx ts-node scripts/deploy.ts
-  testnet
+  old
     EQB72oxwTBSdrj0G-vF3IE6reYxHBMD2QYOhrcf1qcHrbRmI
-  local
+  new (on testnet & local)
     EQA_KTHbze8hyF1YvkrxDkepkadZWKnbu8FSSZXEYlW4cUpY
-
 
 MyLocalTon
 java -jar MyLocalTon-x86-64-testnet.jar
 /home/dmitry/.local/bin/ton-http-api --liteserver-config /home/dmitry/tools/myLocalTon/myLocalTon/genesis/db/my-ton-global.config.json --port 8081
+
+https://github.com/tonwhales/ton-crypto
+
+посмотреть сообщения, доставленные контракту в блоке
+  cat blk1390.json | jq '.extra.inMsgDescrs.leaf | map(select(.message.destAddr.addr == "3F2931DBCDEF21C85D58BE4AF10E47A991A75958A9DBBBC1524995C46255B871") | .message.body.cells | .[0])'
