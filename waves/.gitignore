@@ -1,6 +1,7 @@
 we-node/
 habr-amm/
 transaction-factory/
+js-contract-sdk/
 
 node_modules/
 dist/

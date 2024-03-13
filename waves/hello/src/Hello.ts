@@ -19,7 +19,7 @@ export default class Hello {
   @Var() counter!: ContractValue<number>
 
   @Action({ onInit: true })
-  init(@Param('init') initial_counter: number) {
+  async init(@Param('init') initial_counter: number) {
     this.log.info(`called init with ${initial_counter}`)
     console.log('called init with %d', initial_counter)
 
@@ -33,5 +33,29 @@ export default class Hello {
 
     const counter = await this.counter.get()
     this.counter.set(counter + by)
+  }
+
+  @Action()
+  async decrement(@Param('by') by: number) {
+    this.log.info(`called decrement by ${by}`)
+    console.log('called decrement by %d', by)
+
+    const counter = await this.counter.get()
+    this.log.info(`read counter value ${counter}`)
+    console.log('read counter value %d', counter)
+    
+    await new Promise(r => setTimeout(r, 5000))  // wait for set happens
+    if (counter >= by) {
+      this.counter.set(counter - by)
+    }
+  }
+
+  @Action()
+  async set(@Param('to') to: number) {
+    this.log.info(`called set to ${to}`)
+    console.log('called set to %d', to)
+
+    await new Promise(r => setTimeout(r, 2000))  // wait for decrement start
+    this.counter.set(to)
   }
 }
