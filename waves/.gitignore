@@ -5,3 +5,6 @@ js-contract-sdk/
 
 node_modules/
 dist/
+
+.metals/
+.vscode/

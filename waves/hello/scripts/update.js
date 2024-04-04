@@ -10,10 +10,10 @@ async function update() {
 
     const tx = TRANSACTIONS.UpdateContract.V4({
         fee,
-        imageHash: "567a60c07a25941337e9ddf51c6a9c2ae42a9eafe1170edef57a79c450bcb602",
-        image: "localhost:5000/inc-contract:0.0.5",
+        imageHash: "0aa0693507a5fb344e918bcd4dec1a6af931284caa400037ecf0a923ecda7a07",
+        image: "localhost:5000/inc-contract:0.2.4",
         contractId: CONTRACT_ID,
-        validationPolicy: { type: "any" },
+        validationPolicy: { type: "majority" },
         senderPublicKey: await keyPair.publicKey(),
         contractName: "Counter",
         apiVersion: "1.0"

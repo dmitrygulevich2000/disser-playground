@@ -10,12 +10,12 @@ async function deploy() {
 
     const tx = TRANSACTIONS.CreateContract.V5({
         fee,
-        image: "localhost:5000/inc-contract:0.0.2",
-        imageHash: "470d26b23801a4cb15549a0cd63ca9b2d2a6ed6841aa5c31efa98d05e78104f2",
+        image: "localhost:5000/inc-contract:0.2.1",
+        imageHash: "41edca10b1a59b5094361947fe26ff594eae5ae7b68caafc635ce3bcc116a80c",
         contractName: "Counter",
         sender: keyPair.address(),
         senderPublicKey: await keyPair.publicKey(),
-        validationPolicy: { type: 'any' },
+        validationPolicy: { type: 'majority' },
         params: [
             {
                 key: 'init',
@@ -24,7 +24,7 @@ async function deploy() {
             },
         ],
         payments: [],
-        apiVersion: "1.0"
+        apiVersion: "1.0",
     });
 
     const signedTx = await sdk.signer.getSignedTx(tx, keyPair);

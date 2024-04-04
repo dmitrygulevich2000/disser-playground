@@ -37,6 +37,17 @@ async function increment(by) {
     ])
 }
 
+async function multiply(by) {
+    return call([
+        {
+            key: 'action', value: 'multiply', type: 'string'
+        },
+        {
+            key: 'by', value: by, type: 'integer'
+        }
+    ])
+}
+
 async function decrement(by) {
     return call([
         {
@@ -61,12 +72,13 @@ async function set(to) {
 
 module.exports = {
     increment,
+    multiply,
     decrement,
     set,
 }
 
 if (require.main === module) {
-    increment(1).then((sentTx) => {
+    set(1).then((sentTx) => {
         console.log("sent Tx:", sentTx);
         console.log("Success");
     }).catch((err) => {
